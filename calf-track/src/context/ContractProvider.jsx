@@ -105,7 +105,14 @@ export const ContractProvider = ({ children }) => {
     }
   };
 
-  const createPost = async (title, content) => {
+  const createPost = async (origen, productor,siniiga,reemo,edad,destino,upp,psg) => {
+    let date = new Date();
+    let year = date.getUTCFullYear() - 2000;
+    let month = date.getUTCMonth();
+    let day = date.getUTCDate();
+    let hour = date.getUTCHours();
+    let minutes = date.getUTCMinutes();
+    let seconds = date.getUTCSeconds();
     if (program && publicKey) {
       setTransactionPending(true);
       try {
@@ -123,7 +130,7 @@ export const ContractProvider = ({ children }) => {
         );
 
         await program.methods
-          .createPost(title, content)
+          .createPost(userPda, origen, productor,siniiga,reemo,edad,destino,upp,psg,year, month, day, hour, minutes, seconds)
           .accounts({
             userAccount: userPda,
             postAccount: postPda,

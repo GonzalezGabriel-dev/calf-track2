@@ -1,7 +1,34 @@
-import React from 'react';
+import React,{useState} from 'react';
 import NavBar from '../components/NavBar';
+import imagen from '../img/vacas.jpeg';
+import Modal from 'react-modal';
 
 export default function HomeScreen() {
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <div>
       <NavBar />
@@ -35,7 +62,7 @@ export default function HomeScreen() {
           <div class="row">
             <div class="col-md-12 col-sm-12">
               <div class="section-title">
-                <h1>What you get</h1>
+                <h1>Conoce TODO</h1>
               </div>
             </div>
 
@@ -48,7 +75,7 @@ export default function HomeScreen() {
                     role="tab"
                     data-toggle="tab"
                   >
-                    Responsive
+                    Propuesta
                   </a>
                 </li>
 
@@ -59,7 +86,7 @@ export default function HomeScreen() {
                     role="tab"
                     data-toggle="tab"
                   >
-                    Mobile
+                    Segmento
                   </a>
                 </li>
 
@@ -70,7 +97,7 @@ export default function HomeScreen() {
                     role="tab"
                     data-toggle="tab"
                   >
-                    Support
+                    Ventajas
                   </a>
                 </li>
               </ul>
@@ -78,68 +105,45 @@ export default function HomeScreen() {
               <div class="tab-content">
                 <div class="tab-pane active" id="tab01" role="tabpanel">
                   <div class="tab-pane-item">
-                    <h2>Minimal Design</h2>
-                    <p>
-                      Nam feugiat a ante sollicitudin luctus. Quisque eget
-                      placerat massa. Ut quis ligula ornare, pellentesque velit
-                      eget, vestibulum est. Donec pretium tristique elit eget
-                      sodales. Pellentesque posuere.
-                    </p>
-                  </div>
-                  <div class="tab-pane-item">
-                    <h2>Easy to use</h2>
-                    <p>
-                      Aliquam massa massa, consectetur non mattis fringilla,
-                      sodales ac turpis. Morbi ac felis sagittis, faucibus
-                      mauris vitae, placerat mauris.
-                    </p>
+                    <h3>     Dar conocer la trazabilidad de la carne
+de res chihuahuense para generar un
+valor adicional y reconocimiento a
+nuestro estado, por medio de
+productos de calidad y clientes
+satisfechos, también ayudara a guardar
+información de forma digital y segura.</h3>
+                    
                   </div>
                 </div>
 
                 <div class="tab-pane" id="tab02" role="tabpanel">
                   <div class="tab-pane-item">
-                    <h2>Compatible Browsers</h2>
-                    <p>
-                      Nam maximus elit a metus luctus, a faucibus magna mattis.
-                      Ut malesuada viverra iaculis. Nunc euismod sit amet neque
-                      a tincidunt.
-                    </p>
-                  </div>
-                  <div class="tab-pane-item">
-                    <h2>User Friendly</h2>
-                    <p>
-                      Maecenas maximus velit lorem, quis pharetra turpis
-                      fringilla id. Vestibulum tempor facilisis efficitur. Sed
-                      nec nisi sit amet nibh pellentesque elementum.
-                    </p>
-                  </div>
-                  <div class="tab-pane-item">
-                    <h2>HTML5 & CSS3</h2>
-                    <p>
-                      In viverra ipsum ornare sapien rhoncus ullamcorper.
-                      Vivamus vitae risus ac mi vehicula sagittis. Nulla dictum
-                      magna sit amet pharetra aliquam.
-                    </p>
+                    <h3>Nuestro proyecto tiene 2 segmentos de mercado,
+está enfocado a las empresas comercializadoras
+de la carne de res, ya que son las interesadas en
+saber la trazabilidad de el producto para generar
+mayor confiabilidad a sus clientes mientras que el
+sector ganadero está interesado en dar a conocer
+la procedencia de la carne de res para lograr
+mayor venta y un reconocimiento a nivel
+internacional como productores de calidad.</h3>
                   </div>
                 </div>
 
                 <div class="tab-pane" id="tab03" role="tabpanel">
                   <div class="tab-pane-item">
-                    <h2>Quick Support</h2>
-                    <p>
-                      Mauris rutrum est at fringilla pulvinar. Nam ligula urna,
-                      lobortis non scelerisque vel, molestie eu massa. Nullam
-                      mattis elit at tortor accumsan.
-                    </p>
-                  </div>
-                  <div class="tab-pane-item">
-                    <h2>Managed Stuffs</h2>
-                    <p>
-                      Quisque ullamcorper sem quis sapien cursus efficitur. Sed
-                      id sodales ipsum. Morbi eleifend tempus erat sit amet
-                      vehicula. Nulla at posuere tellus, non mattis erat. Nulla
-                      id massa gravida.
-                    </p>
+                    <h3>Al utilizar Blockchain ya hace nuestro proyecto
+único ya que la información será segura, sin
+embargo, otra ventaja es que el estado de
+Chihuahua por muchos años ha mantenido
+primer lugar nacional en exportación de ganado
+bovino, sin embargo, las personas que lo
+consumen no saben su procedencia. Al conocer
+de donde viene la carne de res nuestro estado
+tendrá mayor reconocimiento y con ello podrán
+incrementar las ventas gracias a un aumento de
+demanda de “carne de calidad”.</h3>
+                   
                   </div>
                 </div>
               </div>
@@ -148,9 +152,9 @@ export default function HomeScreen() {
             <div class="col-md-6 col-sm-6">
               <div class="feature-image">
                 <img
-                  src="images/feature-mockup.png"
+                  src={imagen}
                   class="img-responsive"
-                  alt="Thin Laptop"
+                  alt="cows"
                 />
               </div>
             </div>
@@ -163,14 +167,14 @@ export default function HomeScreen() {
             <div class="col-md-offset-1 col-md-10 col-sm-12">
               <form id="contact-form" role="form" action="" method="post">
                 <div class="section-title">
-                  <h1>Say hello to us</h1>
+                  <h1>Envia un mensaje</h1>
                 </div>
 
                 <div class="col-md-4 col-sm-4">
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Full name"
+                    placeholder="Nombre Completo"
                     name="name"
                     required=""
                   />
@@ -179,7 +183,7 @@ export default function HomeScreen() {
                   <input
                     type="email"
                     class="form-control"
-                    placeholder="Email address"
+                    placeholder="Email"
                     name="email"
                     required=""
                   />
@@ -188,15 +192,15 @@ export default function HomeScreen() {
                   <input
                     type="submit"
                     class="form-control"
-                    name="send message"
-                    value="Send Message"
+                    name="Enviar mensaje"
+                    value="Enviar mensaje"
                   />
                 </div>
                 <div class="col-md-12 col-sm-12">
                   <textarea
                     class="form-control"
                     rows="8"
-                    placeholder="Your message"
+                    placeholder="Tu mensaje"
                     name="message"
                     required=""
                   ></textarea>
@@ -206,17 +210,32 @@ export default function HomeScreen() {
           </div>
         </div>
       </section>
-
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+        <button onClick={closeModal}>close</button>
+        <div>I am a modal</div>
+        <form>
+          <input />
+          <button>tab navigation</button>
+          <button>stays</button>
+          <button>inside</button>
+          <button>the modal</button>
+        </form>
+      </Modal>
       <footer id="footer" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row">
             <div class="copyright-text col-md-12 col-sm-12">
               <div class="col-md-6 col-sm-6">
                 <p>
-                  Copyright &copy; 2018 Company Name - Design:
-                  <a rel="nofollow" href="http://tooplate.com">
-                    Tooplate
-                  </a>
+                  CALF-TRACK
                 </p>
               </div>
 
