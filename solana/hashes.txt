@@ -1,3 +1,5 @@
+pubkey: HEwB7sZMEkVboJVPjikQ1Fb3cfLrByGPUJuAyB5oP3AE
+scrap wage notice try boat canyon that volcano lonely area nose response
 ------------- Hacer esto cuado acabemos la programacion ---------------
 
 Notas
@@ -10,8 +12,8 @@ Si no funciona inicar consola como administrador
 • Crear billetera
     solana-keygen new --force
     Billetera para publicar
-    ☼ Hash:
-    ☼ (Esta es la que no se debe anotar en ninguna parte)
+    ☼ Hash: HEwB7sZMEkVboJVPjikQ1Fb3cfLrByGPUJuAyB5oP3AE
+    ☼ (Esta es la que no se debe anotar en ninguna parte):scrap wage notice try boat canyon that volcano lonely area nose response
 
 • Cargar dinero (Se necesita minimo 4)
     solana airdrop 2 /*Hash de la billetera*/
@@ -20,10 +22,11 @@ Si no funciona inicar consola como administrador
     (sudo) anchor build
 
 • Keypar JSON 
-    (sudo) solana address -k /la/ruta/del/json.json
+    (sudo) solana address -k /Users/Ulise/Documents/Github/calf-track/solana/target/deploy/capital_carnico-keypair.json
 
 • Program ID 
-    Se ve cuando ejecutas el comando anterior 
+    6c2RKWQMZ3SgmByGjDj6fhnbiUGdY3gJjQaqYcawTsEv
+    Program Id: 6c2RKWQMZ3SgmByGjDj6fhnbiUGdY3gJjQaqYcawTsEv
 
 • Sustituir en anchor.toml con capital_carnico = "Program ID"
 

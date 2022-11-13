@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-capital_carnico = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+capital_carnico = "6c2RKWQMZ3SgmByGjDj6fhnbiUGdY3gJjQaqYcawTsEv"
 
 [registry]
 url = "https://api.apr.dev"

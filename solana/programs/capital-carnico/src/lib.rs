@@ -10,7 +10,9 @@ pub use crate::ctx::*;
 mod err;
 pub use crate::err::ErrorCode;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+
+
+declare_id!("6c2RKWQMZ3SgmByGjDj6fhnbiUGdY3gJjQaqYcawTsEv");
 
 #[program]
 pub mod miprograma {
@@ -19,13 +21,17 @@ pub mod miprograma {
         //estructura de las cuentas
         ctx: Context<SendPost>, // this para java (las cuentas que interactuan)
 
-        hashtag: String,
-        content: String,
-        url: String,
-
         tip: String,
 
-        time_zone: i8,
+        origen: String,
+        productor: String,
+        siniiga: i8,
+        reemo: String,
+        edad: i8,
+        destino: String,
+        upp: String,
+        psg: String,
+
         year: u8,
         month: u8,
         day: u8,
@@ -37,34 +43,49 @@ pub mod miprograma {
         let author: &Signer = &ctx.accounts.author;
         
 
-        if hashtag.chars().count() > 22 {
-            return Err(ErrorCode::HashtagTooLong.into());
+        if origen.chars().count() > 22 {
+            return Err(ErrorCode::OrigenTooLong.into());
         }
 
-        if content.chars().count() > 280 {
-            return Err(ErrorCode::ContentTooLong.into());
+        if productor.chars().count() > 25 {
+            return Err(ErrorCode::ProductorTooLong.into());
         }
 
-        if url.chars().count() > 90 {
-            return Err(ErrorCode::UrlTooLong.into());
+        if reemo.chars().count() > 90 {
+            return Err(ErrorCode::ReemoTooLong.into());
+        }
+
+
+        if destino.chars().count() > 15 {
+            return Err(ErrorCode::DestinoTooLong.into());
+        }
+
+        if upp.chars().count() > 12 {
+            return Err(ErrorCode::UppTooLong.into());
+        }
+
+        if psg.chars().count() > 12 {
+            return Err(ErrorCode::PsgTooLong.into());
         }
 
         post.author = *author.key;
-        post.time_zone = time_zone;
+
+        post.origen = origen;
+        post.productor= productor;
+        post.siniiga= siniiga;
+        post.reemo= reemo;
+        post.edad= edad;
+        post.destino= destino;
+        post.upp= upp;
+        post.psg= psg;
 
         post.year = year;
         post.month = month;
         post.day = day;
-
         post.hour = hour;
         post.minutes = minutes;
         post.seconds = seconds;
 
-        post.hashtag = hashtag;
-        post.content = content;
-        post.url = url;
-        // Max likes 18 446 744 073 709 551 615
-        post.like = 0;
         let tip: u64 = tip.parse::<u64>().unwrap();
         let payer_info: &Signer = &mut ctx.accounts.author;
         let to = &mut ctx.accounts.wallet_collector;
@@ -72,6 +93,8 @@ pub mod miprograma {
 
         assert!(to.key().to_string() != "");
 
+
+        //Pendiente
         let transfer_instruction = anchor_lang::solana_program::system_instruction::transfer(
             &payer_info.key(),
             &to.key(),
@@ -90,23 +113,7 @@ pub mod miprograma {
         Ok(())
     }
 
-    pub fn edit_post(ctx: Context<EditPost>, hashtag: String, content: String) -> Result<()> {
-        let post: &mut Account<Post> = &mut ctx.accounts.post;
-
-        if hashtag.chars().count() > 22 {
-            return Err(ErrorCode::HashtagTooLong.into());
-        }
-
-        if content.chars().count() > 280 {
-            return Err(ErrorCode::ContentTooLong.into());
-        }
-
-        post.hashtag = hashtag;
-        post.content = content;
+    /*pub fn delete_post(_ctx: Context<DeletePost>) -> Result<()> {
         Ok(())
-    }
-
-    pub fn delete_post(_ctx: Context<DeletePost>) -> Result<()> {
-        Ok(())
-    }
+    }*/
 }

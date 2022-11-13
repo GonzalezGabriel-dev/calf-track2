@@ -17,12 +17,6 @@ pub struct SendPost<'info> {
     pub system_program: AccountInfo<'info>,
 }
 
-#[derive(Accounts)]
-pub struct EditPost<'info> {
-    #[account(mut, has_one = author)]
-    pub post: Account<'info, Post>,
-    pub author: Signer<'info>,
-}
 
 #[derive(Accounts)]
 pub struct DeletePost<'info> {
